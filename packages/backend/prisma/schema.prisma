@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  email         String    @unique
+  password      String
+  name          String?
+  avatar        String?
+  theme         String    @default("light")
+  reminderTime  String?   @default("09:00")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  habits         Habit[]
+  aiChatMessages AIChatMessage[]
+
+  @@map("users")
+}
+
+model Habit {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  category    String?
+  color       String    @default("#3B82F6")
+  icon        String    @default("check-circle")
+  targetCount Int       @default(1)
+  frequency   String    @default("daily") // daily, weekly, custom
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  habitLogs HabitLog[]
+
+  @@map("habits")
+}
+
+model HabitLog {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  date      DateTime @default(now())
+  completed Boolean  @default(false)
+  count     Int      @default(0)
+  notes     String?
+  createdAt DateTime @default(now())
+
+  habitId String @db.ObjectId
+  habit   Habit   @relation(fields: [habitId], references: [id], onDelete: Cascade)
+
+  @@unique([habitId, date])
+  @@map("habit_logs")
+}
+
+model AIChatMessage {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  role      String   // user, assistant
+  content   String
+  timestamp DateTime @default(now())
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("ai_chat_messages")
+}

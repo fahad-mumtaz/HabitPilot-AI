@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "HabitPilot AI - Smart Habit Tracker",
+    "slug": "habitpilot-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.habitpilot.ai",
+      "buildNumber": "1.0.0",
+      "appStoreUrl": "https://apps.apple.com/app/habitpilot-ai"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.habitpilot.ai",
+      "versionCode": 1,
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.habitpilot.ai"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font"
+    ],
+    "description": "Transform your life with AI-powered habit coaching. Build lasting habits, track progress, and achieve your goals with personalized insights from your AI coach.",
+    "keywords": [
+      "habit tracker",
+      "goal setting", 
+      "productivity",
+      "AI coach",
+      "personal development",
+      "routine",
+      "lifestyle",
+      "self improvement"
+    ],
+    "category": "Productivity",
+    "primaryColor": "#3B82F6",
+    "backgroundColor": "#FFFFFF"
+  }
+}

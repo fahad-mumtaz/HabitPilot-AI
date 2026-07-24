@@ -1,0 +1,22 @@
+{
+  "name": "habitpilot-ai",
+  "version": "1.0.0",
+  "description": "Full-stack SaaS habit tracking app with AI coach",
+  "private": true,
+  "workspaces": [
+    "packages/backend",
+    "packages/web",
+    "packages/mobile"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:web\"",
+    "dev:backend": "npm run dev --workspace=packages/backend",
+    "dev:web": "npm run dev --workspace=packages/web",
+    "dev:mobile": "npm run dev --workspace=packages/mobile",
+    "build": "npm run build --workspace=packages/backend && npm run build --workspace=packages/web",
+    "install:all": "npm install --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
