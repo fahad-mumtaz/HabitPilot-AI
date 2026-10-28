@@ -1,3 +1,5 @@
+**Status: Development prototype — July 2026.** Backend, web, and mobile code is present in a single commit. There is no live deployment, and an end-to-end run has not been verified. The AI coach route calls the OpenAI API with a key supplied by the developer; the insights endpoint calculates recommendations from habit data without calling an AI model.
+
 # HabitPilot AI
 
 A full-stack SaaS habit tracking application with AI-powered coaching, featuring both web and mobile applications.
@@ -70,7 +72,7 @@ HabitPilot-AI/
 
 4. Set up the database:
    ```bash
-   npm run db:push
+   npm run db:push --workspace=packages/backend
    ```
 
 5. Start development servers:
